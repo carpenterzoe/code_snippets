@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    li{
+      list-style: none;
+      line-height: 20px;
+      background-color: pink;
+      border: 1px solid #000;
+      width: 400px;
+    }
+    .active{
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>7月9日，资本邦讯，近日，四格互联已完成超1亿元B+轮融资，投资方为至临资本、深圳投控和浚源资本。</li>
+    <li>7月9日，资本邦讯，近日，四格互联已完成超1亿元B+轮融资，投资方为至临资本、深圳投控和浚源资本。</li>
+    <li>7月9日，资本邦讯，近日，四格互联已完成超1亿元B+轮融资，投资方为至临资本、深圳投控和浚源资本。</li>
+    <li>7月9日，资本邦讯，近日，四格互联已完成超1亿元B+轮融资，投资方为至临资本、深圳投控和浚源资本。</li>
+    <li>7月9日，资本邦讯，近日，四格互联已完成超1亿元B+轮融资，投资方为至临资本、深圳投控和浚源资本。</li>
+  </ul>
+</body>
+
+<script>
+  var li = document.getElementsByTagName('li')
+  var index = 0
+
+    setInterval( function(){
+      for(let i=0; i<li.length; i++){
+        li[i].className = ''
+      }
+
+      li[index].className = 'active'
+      index++
+      if(index>4){
+        index = 0
+      }
+
+    }, 1000)
+  
+</script>
+</html>

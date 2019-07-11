@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <input type="text">
+  
+<script>
+  // 定义一个函数，script脚本 请求跨域url时，把这个函数作为callback 传给请求的url。
+  // 请求地址发回来的数据，就是这里拿到的 data
+
+  function getdata(data){
+    var script = document.querySelector('#jsonp')
+    script.parentNode.removeChild(script)
+    console.log(data.s)
+  }
+
+  function createScript (wd){
+    var script = document.createElement('script')
+    script.id = 'jsonp'
+
+    // src指向跨域地址 url
+    script.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+wd+'&cb=getdata'
+    
+    // 必须把这个script标签动态加入到dom元素上，才能正常运行。
+    document.body.appendChild(script)
+  }
+
+  var input = document.getElementsByTagName('input')[0]
+
+  input.onkeyup = function(){
+    var myWd = this.value
+    createScript(myWd)
+  }
+
+</script>
+</body>
+</html>

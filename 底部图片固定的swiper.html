@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/css/swiper.min.css">
+  <style type="text/css">
+    .wrap {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    .panel{
+      height: 100%;
+      width: 100%;
+    }
+    .bordeaux {
+      margin-bottom: 400px
+    }
+    .blue{
+      background-color: blue;
+      z-index: 1;
+    }
+    .turqoise{
+      background-color: #fff;
+      z-index: 2;
+    }
+    .panel.green{
+      background-color: green;
+      z-index: 3;
+    }
+    .bordeaux{
+      background-color: pink;
+      z-index: 4;
+    }
+    .pagination{
+      position: fixed;
+      top: 45%;
+      z-index: 50;
+      list-style: none;
+    }
+    .pagination li{
+      width: 3px;
+      height: 3px;
+      background-color: #000;
+      border-radius: 50%;
+      margin-top: 20px;
+    }
+    #active{
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 1px solid #000;
+      background-color: #fff;
+      /* margin-top: 20px; */
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="panel blue">
+        <b>ONE</b>
+      </section>
+      <section class="panel turqoise">
+        <b>TWO</b>
+      </section>
+      <section class="panel green">
+        <b>THREE</b>
+      </section>
+      <section class="panel bordeaux">
+        <b>FOUR</b>
+      </section>
+      <ul class="pagination">
+        <li></li>
+        <li id="active"></li>
+        <li></li>
+        <li></li>
+      </ul>
+  </div>
+  <script
+  src="http://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+<script>
+    $(function () { // wait for document ready
+      // init
+      var controller = new ScrollMagic.Controller({
+        globalSceneOptions: {
+          triggerHook: 'onLeave',
+          duration: "200%" // this works just fine with duration 0 as well
+          // However with large numbers (>20) of pinned sections display errors can occur so every section should be unpinned once it's covered by the next section.
+          // Normally 100% would work for this, but here 200% is used, as Panel 3 is shown for more than 100% of scrollheight due to the pause.
+        }
+      });
+  
+      // get all slides
+      var slides = document.querySelectorAll("section.panel");
+  
+      // create scene for every slide
+      for (var i=0; i<slides.length; i++) {
+        new ScrollMagic.Scene({
+            triggerElement: slides[i]
+          })
+          .setPin(slides[i], {pushFollowers: false})
+          .addIndicators() // add indicators (requires plugin)
+          .addTo(controller);
+      }
+    });
+  </script>
+</body>
+</html>

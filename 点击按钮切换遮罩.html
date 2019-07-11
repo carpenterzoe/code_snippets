@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  button{
+    z-index: 100;
+    position: relative;
+  }
+  .mask{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+  }
+  .show{
+    display: block;
+  }
+  .hide{
+    display: none;
+  }
+  </style>
+</head>
+<body>
+  <button>
+    点我显示隐藏切换哦哦哦哦哦哦
+  </button>
+  <div class="words">我是文字文字我是文字文字我是文字文字我是文字文字</div>
+
+  <div class="mask hide"></div>
+</body>
+<script>
+  var btn = document.getElementsByTagName('button')[0]
+  var mask = document.getElementsByClassName('mask')[0]
+  btn.onclick = function(){
+    var hide = mask.classList.contains('hide')
+    if(hide){
+      mask.classList.remove('hide')
+      mask.classList.add('show')
+    }else{
+      mask.classList.remove('show')
+      mask.classList.add('hide')
+    }
+  }
+
+</script>
+</html>
