@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    var onlyArr = function() {
+
+      let repeatArr = [
+        { name: 'A', isLeader: 'Yes', group: '1'},
+        { name: 'B', isLeader: 'No', group: '1'},
+        { name: 'C', isLeader: 'No', group: '1'},
+        { name: 'A', isLeader: 'No', group: '2'},
+        { name: 'B', isLeader: 'No', group: '2'},
+        { name: 'C', isLeader: 'Yes', group: '3'}
+      ]
+
+      let leaderArr = []
+      let notLeaderArr = []
+
+      repeatArr.forEach( item => {
+        if(item.isLeader == 'Yes') {
+          leaderArr.push(item)
+        } else {
+          notLeaderArr.push(item)
+        }
+      })
+
+      let obj = {};
+      leaderArr = leaderArr.reduce( (cur, next) => {
+        obj[next.name] ? "" : obj[next.name] = true && cur.push(next)
+        return cur
+      },[])
+
+      let obj2 = {}
+      notLeaderArr = notLeaderArr.reduce( (cur, next) => {
+        obj[next.name] ? "" : obj[next.name] = true && cur.push(next)
+        return cur
+      },[])
+
+      let result = leaderArr.concat(notLeaderArr)
+
+      console.log(result)
+    }
+
+    onlyArr()
+  </script>
+</body>
+</html>
