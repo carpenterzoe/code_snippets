@@ -15,9 +15,20 @@
         { name: 'A', isLeader: 'Yes', group: '1'},
         { name: 'B', isLeader: 'No', group: '1'},
         { name: 'C', isLeader: 'No', group: '1'},
+        { name: 'D', isLeader: 'No', group: '1'},
+        { name: 'E', isLeader: 'No', group: '1'},
+
         { name: 'A', isLeader: 'No', group: '2'},
         { name: 'B', isLeader: 'No', group: '2'},
-        { name: 'C', isLeader: 'Yes', group: '3'}
+        { name: 'C', isLeader: 'Yes', group: '2'},
+        { name: 'D', isLeader: 'No', group: '2'},
+        { name: 'E', isLeader: 'No', group: '2'},
+
+        { name: 'A', isLeader: 'No', group: '3'},
+        { name: 'B', isLeader: 'No', group: '3'},
+        { name: 'C', isLeader: 'Yes', group: '3'},
+        { name: 'D', isLeader: 'No', group: '3'},
+        { name: 'E', isLeader: 'No', group: '3'},
       ]
 
       let leaderArr = []
@@ -30,18 +41,25 @@
           notLeaderArr.push(item)
         }
       })
-
+      console.log('leader', leaderArr)
+      console.log('notLeader', notLeaderArr)
+      
+      // 先把是领导的匹配name去重
       let obj = {};
       leaderArr = leaderArr.reduce( (cur, next) => {
         obj[next.name] ? "" : obj[next.name] = true && cur.push(next)
         return cur
       },[])
 
-      let obj2 = {}
+      console.log('finalLeader', leaderArr)
+      
+      // 再把不是领导的，和之前的数据对比筛选
       notLeaderArr = notLeaderArr.reduce( (cur, next) => {
         obj[next.name] ? "" : obj[next.name] = true && cur.push(next)
         return cur
       },[])
+
+      console.log('finalNotLeader', notLeaderArr)
 
       let result = leaderArr.concat(notLeaderArr)
 
