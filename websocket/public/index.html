@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="text">
+  <button id="btn">发送</button>
+  <script>
+    // 建立websocket连接
+    var ws = new WebSocket('ws://localhost:56565')
+
+    // 当连接建立的时候，会调用 onopen 事件
+    ws.onopen = function() {
+      ws.send('来自客户端的信息') // 客户端发消息给服务端
+
+      document.getElementById('btn').onclick = function() {
+        ws.send(document.getElementById('text').value)
+      }
+    }
+    
+    // 服务端发来的消息，保存在时间对象的data里
+    ws.onmessage = function(e) {
+      console.log(e.data)
+      var p = document.createElement('p')
+      p.innerHTML = e.data
+      document.body.appendChild(p)
+    }
+
+  </script>
+</body>
+</html>
