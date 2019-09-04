@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+  var obj = {
+    id: 1,
+    name: 'Andy',
+    msg: {
+      age: 18
+    },
+    color: ['pink', 'red']
+  }
+  var o = {}
+
+  function deepCopy(newObj, oldObj) {
+    for( var k in oldObj ) {
+      // 属性值 oldObj[k] 
+      var item = oldObj[k]
+
+      // 判断这个值 是否是数组
+      
+      if( item instanceof Array ) {
+        
+        newObj[k] = []    // 即 obj.color= []
+        deepCopy(newObj[k], item)
+
+        // 判断数组放在上面，因为数组也是对象
+        // 如果直接判断Object 数组也会被执行
+
+        // 判断这个值 是否是对象
+      } else if ( item instanceof Object ) {
+        newObj[k] = {}
+        deepCopy(newObj[k], item)
+      
+        // 简单数据类型
+      } else {
+        newObj[k] = item
+      } 
+    }        
+  }
+  deepCopy(o, obj)
+  </script>
+</body>
+</html>
