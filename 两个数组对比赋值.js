@@ -22,8 +22,10 @@ for (let i = 0; i < longArr.length; i++) {
 
 // 再次遍历原始数组，查找id是否在新数组中，是则赋值
 for (let i = 0; i < longArr.length; i++) {
+
   let index = idArr.indexOf(longArr[i].id)
-  if (idArr.indexOf(longArr[i].id) !== -1) {
+
+  if (index !== -1) {
     longArr[i].check = shortArr[index].check
     longArr[i].num = shortArr[index].num
   }
