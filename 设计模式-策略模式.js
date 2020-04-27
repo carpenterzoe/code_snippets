@@ -74,5 +74,10 @@ var compose2 = function() {
 优点：
 可以很轻易实现不同需求场景下，函数的混合组合调用。
 
+什么时候用策略模式?
+1. 各判断条件下的策略相互独立且可复用
+2. 策略内部逻辑相对复杂
+3. 策略需要灵活组合
+
 reference
 https://juejin.im/post/5e0eaff4e51d45413b7b77f3#heading-9
