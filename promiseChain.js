@@ -1,4 +1,5 @@
-// 遍历数组，叠加promise.then 链式调用
+
+// 遍历数组，叠加 promise.then 链式调用
 
 let chain = [
   {
@@ -27,3 +28,5 @@ while (chain.length) {
 
   promise = promise.then( resolved, rejected )
 }
+
+// reference  ts重构axios教程 8.3小节  7分钟处
